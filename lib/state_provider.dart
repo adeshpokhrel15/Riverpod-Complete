@@ -4,14 +4,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final statevalueProvider = StateProvider<int>((ref) => 0);
 
 class stateProviderPage extends ConsumerWidget {
-
   @override
-  Widget build(BuildContext context, watch) {
-    final value = watch(statevalueProvider);
-          final counter = value.state.toString;   
+  Widget build(BuildContext context, WidgetRef ref) {
+    var value = ref.watch(statevalueProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('State Provider')),
-      
+      body: Column(
+        children: [
+          Text(value.toString()),
+          FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                value++;
+              })
+        ],
+      ),
     );
   }
 }
