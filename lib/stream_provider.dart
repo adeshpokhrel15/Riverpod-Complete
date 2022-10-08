@@ -19,6 +19,8 @@ class StreamProviderPage extends StatelessWidget {
 
           return value.when(
               data: (data) {
+                print(data);
+
                 return Column(children: [Text(data.toString())]);
               },
               error: ((error, stackTrace) {
